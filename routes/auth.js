@@ -1,27 +1,27 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 router.post('/', function (req, res) {
   if (req.body.user === 'angel' && req.body.password === 'damian') {
     const payload = {
-      authenticated: true
+      authenticated: true,
     }
 
     const token = jwt.sign(payload, 'secret', {
-      expiresIn: '1 day'
+      expiresIn: '1 day',
     })
 
     res.json({
       success: true,
       message: 'Authenticated',
-      token: token
+      token: token,
     })
   }
   else {
     res.status(401).json({
       success: false,
-      message: 'Wrong user/password'
+      message: 'Wrong user/password',
     })
   }
 })
@@ -32,14 +32,14 @@ router.use(function (req, res, next) {
   if (!token) {
     res.status(403).json({
       success: false,
-      message: 'Not authenticated'
+      message: 'Not authenticated',
     })
   } else {
     jwt.verify(token, 'secret', function (error, decoded) {
       if (error) {
         res.status(403).json({
           success: false,
-          message: "Not authenticated"
+          message: 'Not authenticated',
         })
       } else {
         req.decoded = decoded
@@ -49,4 +49,4 @@ router.use(function (req, res, next) {
   }
 })
 
-module.exports = router;
+module.exports = router
