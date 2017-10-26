@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
@@ -5,6 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const api = require('./routes/auth')
+db.connect(`mongod://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`)
 
 const app = express()
 app.use(cors())
