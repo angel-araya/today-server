@@ -5,10 +5,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const db = require('./db/db')
 const api = require('./routes/api')
-
-db.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`)
 
 const app = express()
 app.use(cors())
