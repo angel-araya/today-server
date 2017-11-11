@@ -1,6 +1,6 @@
 {
   "extends": "standard",
   "rules": {
-    "comma-dangle": 0
+    "comma-dangle": "off"
   }
 }
