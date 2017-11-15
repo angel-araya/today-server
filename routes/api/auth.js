@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
       message: 'Wrong user/password',
     })
   }
-  const token = jwt.sign(payload, 'secret', {
+  const token = jwt.sign(payload, process.env.JWT_TOKEN, {
     expiresIn: '7 day',
   })
 
